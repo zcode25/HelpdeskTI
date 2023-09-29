@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\Landing\HomeController;
 use App\Http\Controllers\LoginController;
@@ -31,8 +32,8 @@ Route::controller(DashboardController::class)->group(function() {
     route::get('/admin/dashboard', 'index');
 });
 
-Route::controller(KaryawanDashboardController::class)->group(function() {
-    route::get('/karyawan/dashboard', 'index');
+Route::controller(EmployeeDashboardController::class)->group(function() {
+    route::get('/employee/dashboard', 'index');
 });
 
 Route::controller(LoginController::class)->group(function() {

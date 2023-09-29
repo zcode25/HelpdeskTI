@@ -23,7 +23,7 @@
 
 <body>
 
-    @include('partials.karyawanNav')
+    @include('partials.employeeNav')
     @yield('container')
 
     <footer class="footer">
