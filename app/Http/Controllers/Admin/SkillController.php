@@ -15,7 +15,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $data = Skill::all();
+        $data = Employee::all();
         return view('admin.dashboard.skill.index', compact('data'));
     }
 

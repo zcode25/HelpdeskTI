@@ -13,23 +13,26 @@
             <form method="POST" action="{{ route('employee.store') }}">
                 @csrf
                 <div class="form-group row">
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="employeeName" placeholder="employeeName">
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control" name="name" placeholder="name">
                   </div>
                   <div class="col-sm-2">
                     <select name="divisionId" class="form-control">
-                        <option value="Network">Network</option>
-                        <option value="Software">Software</option>
-                        <option value="Hardware">Hardware</option>
+                    @foreach($data2 as $value)
+                        <option value="{{$value->divisionId}}">{{$value->divisionName}}</option>
+                    @endforeach
                     </select>
                   </div>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="email" placeholder="employeeName">
+                  <div class="col-sm-2">
+                    <input type="email" class="form-control" name="email" placeholder="email">
                   </div>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="employeeName" placeholder="employeeName">
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" name="tel" placeholder="tel">
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control" name="address" placeholder="address">
+                  </div>
+                  <div class="col-sm-2">
                         <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -55,8 +58,8 @@
                 @foreach($data as $value)
                   <tr>
                     <td>{{ $value->employeeId }}</td>
-                    <td>{{ $value->employeeName }}</td>
-                    <td>{{ $value->employeeName }}</td>
+                    <td>{{ $value->name }}</td>
+                    <td>{{ $value->division->divisionName }}</td>
                     <td>{{ $value->email }}</td>
                     <td>{{ $value->tel }}</td>
                     <td>{{ $value->address }}</td>
