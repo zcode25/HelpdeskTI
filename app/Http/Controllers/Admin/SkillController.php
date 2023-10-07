@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use App\Models\Division;
+namespace App\Http\Controllers\admin;
+use App\Models\Skill;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DivisionController extends Controller
+class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $data = Division::all();
-        return view('admin.dashboard.division.index', compact('data'));
+        $data = Skill::all();
+        return view('admin.dashboard.skill.index', compact('data'));
     }
 
     /**
@@ -24,7 +24,10 @@ class DivisionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,10 +37,13 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        $id = IdGenerator::generate(['table' => 'divisions', 'field' => 'divisionId', 'length' => 5, 'prefix' => 'DV']);
-        Division::create([
-            'divisionId' => $id,
-            'divisionName' => $request['divisionName']
+        $id = IdGenerator::generate(['table' => 'skills', 'field' => 'skillId', 'length' => 5, 'prefix' => 'SK']);
+        Skill::create([
+            'skillId' => $id,
+            'skillCategory' => $request['skillCategory'],
+            'skillName' => $request['skillName'],
+            'skillDesc' => $request['skillDesc'],
+            'certificate' => $request['certificate']
         ]);
         return back();
     }
@@ -48,6 +54,10 @@ class DivisionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,8 +67,8 @@ class DivisionController extends Controller
      */
     public function edit($id)
     {
-        $data = Division::where('divisionId', $id)->first();
-        return view('admin.dashboard.division.edit', compact('data'));
+        $data = Skill::find($id);
+        return view('admin.dashboard.skill.edit', compact('data'));
     }
 
     /**
@@ -70,9 +80,7 @@ class DivisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Division::where('divisionId', $id)->update([
-            'divisionName' => $request['divisionName']
-        ]);
+        Skill::find($id)->update($request->all());
         return back();
     }
 
@@ -84,7 +92,7 @@ class DivisionController extends Controller
      */
     public function destroy($id)
     {
-        Division::where('divisionId', $id)->delete();
+        Skill::find($id)->delete();
         return back();
     }
 }

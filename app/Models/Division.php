@@ -9,4 +9,7 @@ class Division extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'divisionId';
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

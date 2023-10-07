@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-use App\Models\Division;
+namespace App\Http\Controllers\admin;
+use App\Models\Category;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DivisionController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $data = Division::all();
-        return view('admin.dashboard.division.index', compact('data'));
+        $data = Category::all();
+        return view('admin.dashboard.category.index', compact('data'));
     }
 
     /**
@@ -24,7 +24,6 @@ class DivisionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
 
     /**
      * Store a newly created resource in storage.
@@ -34,10 +33,10 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        $id = IdGenerator::generate(['table' => 'divisions', 'field' => 'divisionId', 'length' => 5, 'prefix' => 'DV']);
-        Division::create([
-            'divisionId' => $id,
-            'divisionName' => $request['divisionName']
+        $id = IdGenerator::generate(['table' => 'categories', 'field' => 'categoryId', 'length' => 5, 'prefix' => 'CT']);
+        Category::create([
+            'categoryId' => $id,
+            'categoryName' => $request['categoryName']
         ]);
         return back();
     }
@@ -57,8 +56,8 @@ class DivisionController extends Controller
      */
     public function edit($id)
     {
-        $data = Division::where('divisionId', $id)->first();
-        return view('admin.dashboard.division.edit', compact('data'));
+        $data = Category::find($id);
+        return view('admin.dashboard.category.edit', compact('data'));
     }
 
     /**
@@ -70,8 +69,8 @@ class DivisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Division::where('divisionId', $id)->update([
-            'divisionName' => $request['divisionName']
+        Category::find($id)->update([
+            'categoryName' => $request['categoryName']
         ]);
         return back();
     }
@@ -84,7 +83,7 @@ class DivisionController extends Controller
      */
     public function destroy($id)
     {
-        Division::where('divisionId', $id)->delete();
+        Category::find($id)->delete();
         return back();
     }
 }

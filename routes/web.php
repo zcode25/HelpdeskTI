@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\Landing\HomeController;
@@ -32,7 +35,18 @@ Route::controller(HomeController::class)->group(function() {
 Route::controller(DashboardController::class)->group(function() {
     route::get('/admin/dashboard', 'index');
 });
-Route::resource('/admin/division', DivisionController::class);
+Route::controller(EmployeeController::class)->group(function() {
+    route::resource('/admin/employee', EmployeeController::class);
+});
+Route::controller(DivisionController::class)->group(function() {
+    route::resource('/admin/division', DivisionController::class);
+});
+Route::controller(CategoryController::class)->group(function() {
+    route::resource('/admin/category', CategoryController::class);
+});
+Route::controller(SkillController::class)->group(function() {
+    route::resource('/admin/skill', SkillController::class);
+});
 Route::controller(EmployeeDashboardController::class)->group(function() {
     route::get('/employee/dashboard', 'index');
 });
