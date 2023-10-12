@@ -1,15 +1,20 @@
 <div class="wrapper">
   <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-      <a class="sidebar-brand" href="/admin/home">
+      <a class="sidebar-brand" href="admin/dashboard">
         <span class="align-middle">HESTI</span>
       </a>
 
       <ul class="sidebar-nav">
 
         <li class="sidebar-item {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
-          <a class="sidebar-link" href="/admin/home">
+          <a class="sidebar-link" href="/admin/dashboard">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar-item {{ Request::is('/admin/employee*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/admin/employee">
+            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Employee</span>
           </a>
         </li>
 
