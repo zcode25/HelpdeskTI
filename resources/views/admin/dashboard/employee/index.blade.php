@@ -3,7 +3,7 @@
 <main class="content">
   <div class="container-fluid p-0">
 
-    <h1 class="h3 mb-3">employee</h1>
+    <h1 class="h3 mb-3">Employee</h1>
 
     <div class="row">
       <div class="col-12">
@@ -45,13 +45,13 @@
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">employeeId</th>
-                    <th scope="col">employeeName</th>
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Division</th>
-                    <th scope="col">email</th>
-                    <th scope="col">tel</th>
-                    <th scope="col">address</th>
-                    <th scope="col">action</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tel</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@
                           <a class="btn btn-primary" href="{{ route('employee.edit',$value->employeeId) }}">Edit</a>
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-danger"><i class="align-middle" data-feather="briefcase"></i></button>
                         </form>
                     </td>
                   </tr>

@@ -6,32 +6,33 @@
     <h1 class="h3 mb-3">Division</h1>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-xl-6">
         <div class="card">
-          <div class="card-header">
-            {{-- <h5 class="card-title mb-0">Division Data</h5> --}}
+          <div class="card-body">
+            <p class="h5 mb-3">Add Division</p>
             <form method="POST" action="{{ route('division.store') }}">
-                @csrf
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="divisionName" placeholder="divisionName">
-                  </div>
-                  <div class="col-sm-6">
-                        <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
-                    </div>
+              @csrf
+              <div class="form-group row g-3">
+                <div class="col-xl-8">
+                  <input type="text" class="form-control" name="divisionName" placeholder="Division Name">
                 </div>
-  
-                    
-              </form>
+                <div class="col-xl-4">
+                  <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
+                </div>
+              </div>            
+            </form>
           </div>
+        </div>
+
+        <div class="card">
           <div class="card-body">
           
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">divisionId</th>
-                    <th scope="col">divisionName</th>
-                    <th scope="col">action</th>
+                    <th scope="col">Division Id</th>
+                    <th scope="col">Division Name</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,10 +42,10 @@
                     <td>{{ $value->divisionName }}</td>
                     <td>
                         <form action="{{ route('division.destroy', $value->divisionId) }}" method="POST">
-                          <a class="btn btn-primary" href="{{ route('division.edit',$value->divisionId) }}">Edit</a>
+                          <a class="btn btn-primary btn-sm" href="{{ route('division.edit',$value->divisionId) }}"><i class="align-middle" data-feather="edit"></i></a>
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="align-middle" data-feather="trash"></i></button>
                         </form>
                     </td>
                   </tr>

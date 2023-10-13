@@ -12,9 +12,14 @@
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
           </a>
         </li>
-        <li class="sidebar-item {{ Request::is('/admin/employee*') ? 'active' : '' }}">
+        <li class="sidebar-item {{ Request::is('admin/employee*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/admin/employee">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Employee</span>
+          </a>
+        </li>
+        <li class="sidebar-item {{ Request::is('admin/division*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/admin/division">
+            <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Division</span>
           </a>
         </li>
 
