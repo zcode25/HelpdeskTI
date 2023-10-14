@@ -7,41 +7,51 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            {{-- <h5 class="card-title mb-0">employee Data</h5> --}}
-            <form method="POST" action="{{ route('employee.store') }}">
-                @csrf
-                <div class="form-group row">
-                  <div class="col-sm-2">
-                    <input type="text" class="form-control" name="name" placeholder="name">
-                  </div>
-                  <div class="col-sm-2">
-                    <select name="divisionId" class="form-control">
-                    @foreach($data2 as $value)
-                        <option value="{{$value->divisionId}}">{{$value->divisionName}}</option>
-                    @endforeach
-                    </select>
-                  </div>
-                  <div class="col-sm-2">
-                    <input type="email" class="form-control" name="email" placeholder="email">
-                  </div>
-                  <div class="col-sm-2">
-                    <input type="number" class="form-control" name="tel" placeholder="tel">
-                  </div>
-                  <div class="col-sm-2">
-                    <input type="text" class="form-control" name="address" placeholder="address">
-                  </div>
-                  <div class="col-sm-2">
-                        <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="card">
+              <div class="card-body">
+              <p class="h5 mb-3">Add Employee</p>
+                <form method="POST" action="{{ route('employee.store') }}">
+                  @csrf
+                  <div class="form-group">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                      <label for="name">Name</label>
                     </div>
-                </div>
-  
-                    
-              </form>
+                    <div class="form-floating mb-3">
+                      <select name="divisionId" id="divisionId" class="form-control">
+                      @foreach($data2 as $value)
+                          <option value="{{$value->divisionId}}">{{$value->divisionName}}</option>
+                      @endforeach
+                      </select>
+                      <label for="divisionId">Division</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="email" name="email" placeholder="email">
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="tel" class="form-control" id="tel" name="tel" placeholder="tel">
+                      <label for="tel">Tel</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="address" name="address" placeholder="address">
+                      <label for="address">Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
+                    </div>
+                  </div> 
+                </form>
+              </div>
+            </div>
           </div>
+        </div>
+        
+
+        <div class="card">
           <div class="card-body">
-          
             <table class="table">
                 <thead>
                   <tr>
@@ -65,10 +75,10 @@
                     <td>{{ $value->address }}</td>
                     <td>
                         <form action="{{ route('employee.destroy', $value->employeeId) }}" method="POST">
-                          <a class="btn btn-primary" href="{{ route('employee.edit',$value->employeeId) }}">Edit</a>
+                          <a class="btn btn-primary btn-sm" href="{{ route('employee.edit',$value->employeeId) }}"><i class="align-middle" data-feather="edit"></i></a>
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger"><i class="align-middle" data-feather="briefcase"></i></button>
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="align-middle" data-feather="trash"></i></button>
                         </form>
                     </td>
                   </tr>

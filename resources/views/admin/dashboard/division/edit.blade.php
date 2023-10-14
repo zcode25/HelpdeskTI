@@ -13,12 +13,13 @@
               <form action="{{ route('division.update', $data->divisionId) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group row g-3">
+                <div class="form-group">
                   <input type="hidden" class="form-control-plaintext" value="{{ $data->divisionId }}" name="divisionId">
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" value="{{ $data->divisionName }}" name="divisionName">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" value="{{ $data->divisionName }}" name="divisionName" id="divisionName">
+                    <label for="divisionName">Division Name</label>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="form-floating mb-3">
                     <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
                   </div>
                 </div>
