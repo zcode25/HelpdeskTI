@@ -16,7 +16,7 @@ class DivisionController extends Controller
     public function index()
     {
         $data = Division::all();
-        return view('admin.dashboard.division.index', compact('data'));
+        return view('admin.division.index', compact('data'));
     }
 
     /**
@@ -25,6 +25,10 @@ class DivisionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function create()
+     {
+         return view('admin.division.create');
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -39,7 +43,7 @@ class DivisionController extends Controller
             'divisionId' => $id,
             'divisionName' => $request['divisionName']
         ]);
-        return back();
+        return redirect('/admin/division')->with('success', 'Division data added successfully');
     }
 
     /**
@@ -58,7 +62,7 @@ class DivisionController extends Controller
     public function edit($id)
     {
         $data = Division::where('divisionId', $id)->first();
-        return view('admin.dashboard.division.edit', compact('data'));
+        return view('admin.division.edit', compact('data'));
     }
 
     /**
@@ -73,7 +77,7 @@ class DivisionController extends Controller
         Division::where('divisionId', $id)->update([
             'divisionName' => $request['divisionName']
         ]);
-        return back();
+        return redirect('/admin/division')->with('success', 'Division data updated successfully');
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use App\Models\Employee;
 use App\Models\Skill;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Controllers\Controller;
@@ -10,13 +11,14 @@ class SkillController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $data = Employee::all();
-        return view('admin.dashboard.skill.index', compact('data'));
+        $data2 = Skill::all();
+        return view('admin.skill.index', compact('data', 'data2'));
     }
 
     /**
@@ -68,7 +70,7 @@ class SkillController extends Controller
     public function edit($id)
     {
         $data = Skill::find($id);
-        return view('admin.dashboard.skill.edit', compact('data'));
+        return view('admin.skill.edit', compact('data'));
     }
 
     /**

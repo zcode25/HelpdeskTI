@@ -6,32 +6,33 @@
     <h1 class="h3 mb-3">Category</h1>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-xl-6">
         <div class="card">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Category Data</h5>
+          <div class="card-body">
+            <p class="h5 mb-3">Add Category</p>
             <form method="POST" action="{{ route('category.store') }}">
-                @csrf
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="categoryName" placeholder="categoryName">
-                  </div>
-                  <div class="col-sm-6">
-                        <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
-                    </div>
+              @csrf
+              <div class="form-group">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" name="categoryName" name="categoryName" placeholder="categoryName">
+                  <label for="categoryName">Category Name</label>
                 </div>
-  
-                    
+                <div class="form-floating mb-3">
+                  <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
+                </div>
+              </div>
               </form>
           </div>
-          <div class="card-body">
-          
+        </div>
+
+        <div class="card">
+          <div class="card-body">   
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">categoryId</th>
-                    <th scope="col">cateogryName</th>
-                    <th scope="col">action</th>
+                    <th scope="col">Category Id</th>
+                    <th scope="col">Cateogry Name</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,10 +42,10 @@
                     <td>{{ $value->categoryName }}</td>
                     <td>
                         <form action="{{ route('category.destroy', $value->categoryId) }}" method="POST">
-                          <a class="btn btn-primary" href="{{ route('category.edit',$value->categoryId) }}">Edit</a>
+                          <a class="btn btn-primary btn-sm" href="{{ route('category.edit',$value->categoryId) }}"><i class="align-middle" data-feather="edit"></i></a>
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Delete</button>
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="align-middle" data-feather="trash"></i></button>
                         </form>
                     </td>
                   </tr>

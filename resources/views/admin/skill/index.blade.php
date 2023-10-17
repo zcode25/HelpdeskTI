@@ -59,12 +59,6 @@
                     <td>{{ $value->skillDesc }}</td>
                     <td>{{ $value->certificate }}</td>
                     <td>
-                        <form action="{{ route('skill.destroy', $value->skillId) }}" method="POST">
-                          <a class="btn btn-primary" href="{{ route('skill.edit',$value->skillId) }}">Edit</a>
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
                     </td>
                   </tr>
                 @endforeach

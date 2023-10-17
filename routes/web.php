@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\Landing\HomeController;
@@ -46,6 +47,10 @@ Route::controller(CategoryController::class)->group(function() {
 });
 Route::controller(SkillController::class)->group(function() {
     route::resource('/admin/skill', SkillController::class);
+});
+Route::controller(UserController::class)->group(function() {
+    route::get('/admin/user', 'index')->name('user.index');
+    route::get('/admin/user/create', 'create')->name('user.create');
 });
 Route::controller(EmployeeDashboardController::class)->group(function() {
     route::get('/employee/dashboard', 'index');

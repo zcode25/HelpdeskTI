@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\admin;
 use App\Models\Employee;
 use App\Models\Division;
+use App\Models\User;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
@@ -18,7 +21,7 @@ class EmployeeController extends Controller
     {
         $data = Employee::all();
         $data2 = Division::all();
-        return view('admin.dashboard.employee.index', compact('data','data2'));
+        return view('admin.employee.index', compact('data','data2'));
 
     }
 
@@ -29,7 +32,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $data2 = Division::all();
+        return view('admin.employee.create', compact('data2'));
     }
 
     /**
@@ -49,7 +53,16 @@ class EmployeeController extends Controller
             'tel' => $request['tel'],
             'address' => $request['address']
         ]);
-        return back();
+
+        $request["password"] = Hash::make($request["password"]);
+
+        User::create([
+            'userId' => Str::uuid(),
+            'employeeId' => $id,
+            'role' => $request['role'],
+            'password' => $request["password"]
+        ]);
+        return redirect('/admin/employee')->with('success', 'Employee data added successfully');
     }
 
     /**
@@ -73,7 +86,7 @@ class EmployeeController extends Controller
     {
         $data = Employee::find($id);
         $data2 = Division::all();
-        return view('admin.dashboard.employee.edit', compact('data'), compact('data2'));
+        return view('admin.employee.edit', compact('data'), compact('data2'));
     }
 
     /**

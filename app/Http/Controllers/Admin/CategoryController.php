@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        return view('admin.dashboard.category.index', compact('data'));
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data = Category::find($id);
-        return view('admin.dashboard.category.edit', compact('data'));
+        return view('admin.category.edit', compact('data'));
     }
 
     /**

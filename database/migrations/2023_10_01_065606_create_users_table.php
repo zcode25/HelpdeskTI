@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('userId')->primary();
             $table->char('employeeId', 10);
             $table->foreign('employeeId')->references('employeeId')->on('employees')->onUpdate('cascade')->onDelete('restrict');
-            $table->enum('role', ['client', 'admin', 'technician', 'manager'])->default('manager');
+            $table->enum('role', ['client', 'admin', 'technician', 'manager']);
             $table->string('password');
             $table->timestamps();
         });
