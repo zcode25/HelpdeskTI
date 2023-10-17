@@ -99,7 +99,7 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         Employee::find($id)->update($request->all());
-        return back();
+        return redirect('/admin/employee')->with('success', 'Employee data updated successfully');
     }
 
     /**

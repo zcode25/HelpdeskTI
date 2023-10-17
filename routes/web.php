@@ -51,6 +51,8 @@ Route::controller(SkillController::class)->group(function() {
 Route::controller(UserController::class)->group(function() {
     route::get('/admin/user', 'index')->name('user.index');
     route::get('/admin/user/create', 'create')->name('user.create');
+    route::post('/admin/user/store', 'store')->name('user.store');
+    route::get('/admin/user/edit/{user:userId}', 'edit')->name('user.edit');
 });
 Route::controller(EmployeeDashboardController::class)->group(function() {
     route::get('/employee/dashboard', 'index');

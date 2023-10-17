@@ -47,8 +47,6 @@
                         <form action="{{ route('employee.destroy', $value->employeeId) }}" method="POST">
                           <a class="btn btn-primary btn-sm" href="{{ route('employee.edit',$value->employeeId) }}"><i class="align-middle" data-feather="edit"></i></a>
                           @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>
                         </form>
                     </td>
                   </tr>

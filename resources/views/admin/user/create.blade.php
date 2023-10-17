@@ -10,7 +10,7 @@
         <div class="card">
           <div class="card-body">
             <p class="h5 mb-3">Add User</p>
-            <form method="POST" action="{{ route('employee.store') }}">
+            <form method="POST" action="{{ route('user.store') }}">
                 @csrf
                 <div class="form-group">
                 <div class="form-floating mb-3">
