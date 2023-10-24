@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
-use App\Models\Employee;
+namespace App\Http\Controllers\Admin;
 use App\Models\Skill;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
+use App\Models\TechSkill;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SkillController extends Controller
+class TechSkillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $data = Skill::all();
-        return view('admin.skill.index', compact('data'));
+        //
     }
 
     /**
@@ -38,15 +36,7 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        $id = IdGenerator::generate(['table' => 'skills', 'field' => 'skillId', 'length' => 5, 'prefix' => 'SK']);
-        Skill::create([
-            'skillId' => $id,
-            'skillCategory' => $request['skillCategory'],
-            'skillName' => $request['skillName'],
-            'skillDesc' => $request['skillDesc'],
-            'certificate' => $request['certificate']
-        ]);
-        return back();
+        //
     }
 
     /**
@@ -68,19 +58,7 @@ class SkillController extends Controller
      */
     public function edit($id)
     {
-        $data = Skill::find($id);
-        $data2 = [
-            [
-                "skillCategory" => "Network"
-            ],
-            [
-                "skillCategory" => "Software"
-            ],
-            [
-                "skillCategory" => "Hardware"
-            ]
-        ];
-        return view('admin.skill.edit', compact(['data', 'data2']));
+        //
     }
 
     /**
@@ -92,8 +70,7 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Skill::find($id)->update($request->all());
-        return back();
+        //
     }
 
     /**
@@ -104,7 +81,6 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-        Skill::find($id)->delete();
-        return back();
+        //
     }
 }

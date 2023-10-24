@@ -33,12 +33,12 @@
                         <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
                     </div>
                 </div>
-  
-                    
+
+
               </form>
           </div>
           <div class="card-body">
-          
+
             <table class="table">
                 <thead>
                   <tr>
@@ -59,6 +59,13 @@
                     <td>{{ $value->skillDesc }}</td>
                     <td>{{ $value->certificate }}</td>
                     <td>
+                        <form action="{{ route('skill.destroy', $value->skillId) }}" method="POST">
+                            <a class="btn btn-primary btn-sm" href="{{ route('skill.edit',$value->skillId) }}"><i class="align-middle" data-feather="edit"></i></a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>
+                        </form>
+
                     </td>
                   </tr>
                 @endforeach

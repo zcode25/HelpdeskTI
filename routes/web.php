@@ -49,10 +49,12 @@ Route::controller(SkillController::class)->group(function() {
     route::resource('/admin/skill', SkillController::class);
 });
 Route::controller(UserController::class)->group(function() {
-    route::get('/admin/user', 'index')->name('user.index');
-    route::get('/admin/user/create', 'create')->name('user.create');
-    route::post('/admin/user/store', 'store')->name('user.store');
-    route::get('/admin/user/edit/{user:userId}', 'edit')->name('user.edit');
+    route::resource('/admin/user', UserController::class);
+    route::put('/admin/user/{user:userId}', 'reset')->name('user.reset');
+    // route::get('/admin/user', 'index')->name('user.index');
+    // route::get('/admin/user/create', 'create')->name('user.create');
+    // route::post('/admin/user/store', 'store')->name('user.store');
+    // route::get('/admin/user/edit/{user:userId}', 'edit')->name('user.edit');
 });
 Route::controller(EmployeeDashboardController::class)->group(function() {
     route::get('/employee/dashboard', 'index');
