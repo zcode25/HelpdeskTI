@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
 use App\Http\Controllers\Landing\HomeController;
@@ -31,7 +36,26 @@ Route::controller(HomeController::class)->group(function() {
 Route::controller(DashboardController::class)->group(function() {
     route::get('/admin/dashboard', 'index');
 });
-
+Route::controller(EmployeeController::class)->group(function() {
+    route::resource('/admin/employee', EmployeeController::class);
+});
+Route::controller(DivisionController::class)->group(function() {
+    route::resource('/admin/division', DivisionController::class);
+});
+Route::controller(CategoryController::class)->group(function() {
+    route::resource('/admin/category', CategoryController::class);
+});
+Route::controller(SkillController::class)->group(function() {
+    route::resource('/admin/skill', SkillController::class);
+});
+Route::controller(UserController::class)->group(function() {
+    route::resource('/admin/user', UserController::class);
+    route::put('/admin/user/{user:userId}', 'reset')->name('user.reset');
+    // route::get('/admin/user', 'index')->name('user.index');
+    // route::get('/admin/user/create', 'create')->name('user.create');
+    // route::post('/admin/user/store', 'store')->name('user.store');
+    // route::get('/admin/user/edit/{user:userId}', 'edit')->name('user.edit');
+});
 Route::controller(EmployeeDashboardController::class)->group(function() {
     route::get('/employee/dashboard', 'index');
 });

@@ -31,7 +31,7 @@
         <div class="row text-muted">
           <div class="col-6 text-start">
             <p class="mb-0">
-              <p>2023 © PT Citra Daya Purnama</p>
+              <p>2023 © Hesti</p>
               {{-- <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy; --}}
             </p>
           </div>
