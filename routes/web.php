@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
-use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
-use App\Http\Controllers\Landing\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +22,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 //     return "Hello";
 // });
 
-Route::controller(HomeController::class)->group(function() {
-    route::get('/', 'index');
-});
-
 Route::controller(DashboardController::class)->group(function() {
     route::get('/admin/dashboard', 'index');
 });
@@ -37,7 +31,7 @@ Route::controller(EmployeeDashboardController::class)->group(function() {
 });
 
 Route::controller(LoginController::class)->group(function() {
-    route::get('/login', 'index');
+    route::get('/', 'index');
 });
 
 Route::controller(SignupController::class)->group(function() {
