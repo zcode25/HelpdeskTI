@@ -12,16 +12,21 @@
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
           </a>
         </li>
-        <li class="sidebar-item {{ Request::is('admin/user*') ? 'active' : '' }}">
-          <a class="sidebar-link" href="/admin/user">
-            <i class="align-middle" data-feather="grid"></i> <span class="align-middle">User</span>
+        <li class="sidebar-item {{ Request::is('admin/ticket*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/admin/ticket">
+            <i class="align-middle" data-feather="sidebar"></i> <span class="align-middle">Ticket</span>
           </a>
         </li>
-        <li class="sidebar-item {{ Request::is('admin/employee*') ? 'active' : '' }}">
+        <li class="sidebar-item {{ Request::is('admin/user*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/admin/user">
+            <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
+          </a>
+        </li>
+        {{-- <li class="sidebar-item {{ Request::is('admin/employee*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/admin/employee">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Employee</span>
           </a>
-        </li>
+        </li> --}}
         <li class="sidebar-item {{ Request::is('admin/division*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/admin/division">
             <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Division</span>
@@ -32,11 +37,7 @@
             <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Category</span>
           </a>
         </li>
-        <li class="sidebar-item {{ Request::is('admin/skill*') ? 'active' : '' }}">
-          <a class="sidebar-link" href="/admin/skill">
-            <i class="align-middle" data-feather="zap"></i> <span class="align-middle">Skill</span>
-          </a>
-        </li>
+        
 
       </ul>
     </div>
@@ -56,7 +57,7 @@
             </a>
 
             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="text-dark">Selamat datang</span>
+              <span class="text-dark">Selamat datang, {{ auth()->user()->Employee->name }}</span>
               
             </a>
             <div class="dropdown-menu dropdown-menu-end">

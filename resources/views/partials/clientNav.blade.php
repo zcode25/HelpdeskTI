@@ -7,9 +7,15 @@
 
       <ul class="sidebar-nav">
 
-        <li class="sidebar-item {{ Request::is('karyawan/dashboard*') ? 'active' : '' }}">
-          <a class="sidebar-link" href="/karyawan/dashboard">
+        <li class="sidebar-item {{ Request::is('client/dashboard*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/client/dashboard">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item {{ Request::is('client/ticket*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/client/ticket">
+            <i class="align-middle" data-feather="sidebar"></i> <span class="align-middle">Ticket</span>
           </a>
         </li>
 
@@ -31,7 +37,7 @@
             </a>
 
             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="text-dark">Selamat datang</span>
+              <span class="text-dark">Selamat datang, {{ auth()->user()->Employee->name }}</span>
               
             </a>
             <div class="dropdown-menu dropdown-menu-end">

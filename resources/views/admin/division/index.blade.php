@@ -3,7 +3,7 @@
 <main class="content">
   <div class="container-fluid p-0">
 
-    <h1 class="h3 mb-3">Division</h1>
+    <h1 class="h3 mb-3">Division List</h1>
     @if (session()->has('success'))  
     <div class="alert alert-warning alert-dismissible fade show badge bg-success mb-3" role="alert">
       <span>{{ session('success') }}</span>
@@ -21,11 +21,11 @@
       <div class="col-xl-6">
         <div class="card">
           <div class="card-body">
-            <a href="{{ route('division.create') }}" class="btn btn-primary btn-sm mb-3"><i class="align-middle me-2" data-feather="briefcase"></i><span class="align-middle"> Add Division</span></a>
-            <table class="table">
+            <a href="{{ route('division.create') }}" class="btn btn-primary btn-sm mb-4"><i class="align-middle me-2" data-feather="briefcase"></i><span class="align-middle"> Add Division</span></a>
+            <table class="table" id="myTable">
                 <thead>
                   <tr>
-                    <th scope="col">Division Id</th>
+                    {{-- <th scope="col">Division Id</th> --}}
                     <th scope="col">Division Name</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -33,14 +33,14 @@
                 <tbody>
                 @foreach($data as $value)
                   <tr>
-                    <td>{{ $value->divisionId }}</td>
+                    {{-- <td>{{ $value->divisionId }}</td> --}}
                     <td>{{ $value->divisionName }}</td>
                     <td>
                         <form action="{{ route('division.destroy', $value->divisionId) }}" method="POST">
-                          <a class="btn btn-primary btn-sm" href="{{ route('division.edit',$value->divisionId) }}"><i class="align-middle" data-feather="edit"></i></a>
+                          <a class="btn btn-primary btn-sm" href="{{ route('division.edit',$value->divisionId) }}" title="Edit"><i class="align-middle" data-feather="edit"></i></a>
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" title="Delete"><i class="align-middle" data-feather="trash"></i></button>
                         </form>
                     </td>
                   </tr>

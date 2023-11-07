@@ -12,4 +12,12 @@ class Skill extends Model
     protected $primaryKey = 'skillId';
     public $incrementing = false;
     protected $keyType = 'string';
+
+    public function TechSkill() {
+        return $this->hasOne(TechSkill::class, 'skillTechId', 'skillTechId');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'categoryId', 'categoryId');
+    }
 }

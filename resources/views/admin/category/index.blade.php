@@ -3,34 +3,30 @@
 <main class="content">
   <div class="container-fluid p-0">
 
-    <h1 class="h3 mb-3">Category</h1>
+    <h1 class="h3 mb-3">Category List</h1>
+    @if (session()->has('success'))  
+    <div class="alert alert-warning alert-dismissible fade show badge bg-success mb-3" role="alert">
+      <span>{{ session('success') }}</span>
+      <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if (session()->has('error'))  
+    <div class="alert alert-warning alert-dismissible fade show badge bg-danger mb-3" role="alert">
+      <span>{{ session('success') }}</span>
+      <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
 
     <div class="row">
       <div class="col-xl-6">
-        <div class="card">
-          <div class="card-body">
-            <p class="h5 mb-3">Add Category</p>
-            <form method="POST" action="{{ route('category.store') }}">
-              @csrf
-              <div class="form-group">
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="categoryName" name="categoryName" placeholder="categoryName">
-                  <label for="categoryName">Category Name</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <button type="submit" class="col-sm-12 btn btn-primary">Submit</button>
-                </div>
-              </div>
-              </form>
-          </div>
-        </div>
 
         <div class="card">
           <div class="card-body">   
-            <table class="table">
+            <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm mb-4"><i class="align-middle me-2" data-feather="briefcase"></i><span class="align-middle"> Add Category</span></a>
+            <table class="table" id="myTable">
                 <thead>
                   <tr>
-                    <th scope="col">Category Id</th>
+                    {{-- <th scope="col">Category Id</th> --}}
                     <th scope="col">Cateogry Name</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -38,7 +34,7 @@
                 <tbody>
                 @foreach($data as $value)
                   <tr>
-                    <td>{{ $value->categoryId }}</td>
+                    {{-- <td>{{ $value->categoryId }}</td> --}}
                     <td>{{ $value->categoryName }}</td>
                     <td>
                         <form action="{{ route('category.destroy', $value->categoryId) }}" method="POST">

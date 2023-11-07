@@ -38,11 +38,14 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        $id = IdGenerator::generate(['table' => 'divisions', 'field' => 'divisionId', 'length' => 5, 'prefix' => 'DV']);
-        Division::create([
-            'divisionId' => $id,
-            'divisionName' => $request['divisionName']
+        $validatedData = $request->validate([
+            'divisionName'  => 'required|max:50',
         ]);
+
+        $validatedData['divisionId'] = IdGenerator::generate(['table' => 'divisions', 'field' => 'divisionId', 'length' => 5, 'prefix' => 'DV']);
+        
+        Division::create($validatedData);
+        
         return redirect('/admin/division')->with('success', 'Division data added successfully');
     }
 
@@ -74,9 +77,11 @@ class DivisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Division::where('divisionId', $id)->update([
-            'divisionName' => $request['divisionName']
+        $validatedData = $request->validate([
+            'divisionName'  => 'required|max:50',
         ]);
+
+        Division::where('divisionId', $id)->update($validatedData);
         return redirect('/admin/division')->with('success', 'Division data updated successfully');
     }
 

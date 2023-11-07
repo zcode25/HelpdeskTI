@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->char('skillId', 5)->primary();
-            $table->enum('skillCategory', ['Network', 'Software', 'Hardware']);
+            $table->char('categoryId', 5);
+            $table->foreign('categoryId')->references('categoryId')->on('categories')->onUpdate('cascade')->onDelete('restrict');
             $table->string('skillName', 50);
             $table->string('skillDesc', 200);
-            $table->string('certificate', 50);
+            $table->string('certificate', 200);
             $table->timestamps();
         });
     }

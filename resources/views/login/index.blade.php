@@ -17,7 +17,7 @@
             <div class="card-body p-4">
               <div class="row">
                 <div class="col text-center">
-                  <h3>IT Helpdesk</h3>
+                  <h3>HESTI</h3>
                   <p>Welcome, please login.</p>
                   <hr>
                 </div>
@@ -25,11 +25,11 @@
               
               <div class="row">
                 <div class="col">
-                  <form action="/login/authenticate" method="POST">
+                  <form action="{{ route('login.authenticate') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                      <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email Address" name="email" autocomplete="off">
-                      @error('email') 
+                      <input type="text" class="form-control @error('employeeId') is-invalid @enderror" id="employeeId" placeholder="Employee Id" name="employeeId" autocomplete="off">
+                      @error('employeeId') 
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>

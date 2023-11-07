@@ -20,7 +20,8 @@ return new class extends Migration
             $table->foreign('ticketId')->references('ticketId')->on('tickets')->onUpdate('cascade')->onDelete('restrict');
             $table->enum('status', ['Sent', 'Accepted', 'On Hold', 'Rejected', 'Complaint Accepted', 'Complaint On Hold', 'Complaint Rejected', 'Complaint Assignment', 'Assignment', 'Worked on', 'Validation', 'Complaint', 'Done']);
             $table->string('statusDesc', 200);
-            $table->dateTime('statusDate');
+            $table->string('statusNote', 200);
+            $table->date('statusDate');
             $table->timestamps();
         });
     }

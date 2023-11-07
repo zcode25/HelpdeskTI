@@ -3,7 +3,7 @@
 <main class="content">
   <div class="container-fluid p-0">
 
-    <h1 class="h3 mb-3">User</h1>
+    <h1 class="h3 mb-3">User List</h1>
     @if (session()->has('success'))
     <div class="alert alert-warning alert-dismissible fade show badge bg-success mb-3" role="alert">
       <span>{{ session('success') }}</span>
@@ -22,8 +22,8 @@
 
         <div class="card">
           <div class="card-body">
-          <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm mb-3"><i class="align-middle me-2" data-feather="user"></i><span class="align-middle"> Add User</span></a>
-            <table class="table">
+          <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm mb-4"><i class="align-middle me-2" data-feather="user"></i><span class="align-middle"> Add User</span></a>
+            <table class="table" id="myTable">
                 <thead>
                   <tr>
                     <th scope="col">Employee Id</th>

@@ -12,4 +12,8 @@ class Category extends Model
     protected $primaryKey = 'categoryId';
     public $incrementing = false;
     protected $keyType = 'string';
+
+    public function skill(){
+        return $this->hasMany(skill::class, 'skillId', 'skillId');
+    }
 }

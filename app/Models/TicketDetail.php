@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TicketDetail extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $primaryKey = 'ticketDetailId';
+    public $incrementing = false;
+    protected $keyType = 'string';
 }

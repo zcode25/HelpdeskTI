@@ -12,6 +12,7 @@ class Division extends Model
     protected $primaryKey = 'divisionId';
     public $incrementing = false;
     protected $keyType = 'string';
+    
     public function employee(){
         return $this->hasMany(Employee::class, 'divisionId', 'divisionId');
     }

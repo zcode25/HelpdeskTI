@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('userId')->primary();
-            $table->char('employeeId', 10);
+            $table->char('employeeId', 10)->unique();
             $table->foreign('employeeId')->references('employeeId')->on('employees')->onUpdate('cascade')->onDelete('restrict');
             $table->enum('role', ['Client', 'Admin', 'Technician', 'Manager']);
             $table->string('password');

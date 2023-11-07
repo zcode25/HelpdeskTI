@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->char('divisionId', 5);
             $table->foreign('divisionId')->references('divisionId')->on('divisions')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('email', 50);
+            $table->string('email', 50)->unique();
             $table->string('tel', 15)->unique();
             $table->string('address', 200);
             $table->timestamps();

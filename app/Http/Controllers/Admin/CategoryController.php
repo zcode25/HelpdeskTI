@@ -25,6 +25,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     public function create()
+     {
+         return view('admin.category.create');
+     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,12 +38,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $id = IdGenerator::generate(['table' => 'categories', 'field' => 'categoryId', 'length' => 5, 'prefix' => 'CT']);
-        Category::create([
-            'categoryId' => $id,
-            'categoryName' => $request['categoryName']
+        $validatedData = $request->validate([
+            'categoryName'  => 'required|max:50'
         ]);
-        return back();
+        $validatedData['categoryId'] = IdGenerator::generate(['table' => 'categories', 'field' => 'categoryId', 'length' => 5, 'prefix' => 'CT']);
+        Category::create($validatedData);
+        return redirect('/admin/category')->with('success', 'Category data added successfully');
     }
 
     /**
@@ -69,10 +74,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Category::find($id)->update([
-            'categoryName' => $request['categoryName']
+        $validatedData = $request->validate([
+            'categoryName'  => 'required|max:50'
         ]);
-        return back();
+        Category::find($id)->update($validatedData);
+        return redirect('/admin/category')->with('success', 'Category data updated successfully');
     }
 
     /**
