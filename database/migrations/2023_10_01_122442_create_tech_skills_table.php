@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('tech_skills', function (Blueprint $table) {
             $table->char('skillTechId', 5)->primary();
-            $table->char('skillId', 5);
-            $table->foreign('skillId')->references('skillId')->on('skills')->onUpdate('cascade')->onDelete('restrict');
             $table->uuid('userId');
             $table->foreign('userId')->references('userId')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->char('categoryId', 5);
+            $table->foreign('categoryId')->references('categoryId')->on('categories')->onUpdate('cascade')->onDelete('restrict');
+            $table->string('skillName', 50);
+            $table->string('skillDesc', 200);
+            $table->string('certificate', 200);
             $table->timestamps();
         });
     }

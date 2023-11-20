@@ -27,4 +27,8 @@ class User extends Authenticatable
     public function ticket() {
         return $this->hasMany(Ticket::class);
     }
+
+    public function techSkill() {
+        return $this->hasMany(TechSkill::class, 'skillTechId', 'skillTechId');
+    }
 }

@@ -7,11 +7,11 @@
 
       <ul class="sidebar-nav">
 
-        <li class="sidebar-item {{ Request::is('client/dashboard*') ? 'active' : '' }}">
+        {{-- <li class="sidebar-item {{ Request::is('client/dashboard*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/client/dashboard">
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
           </a>
-        </li>
+        </li> --}}
 
         <li class="sidebar-item {{ Request::is('client/ticket*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/client/ticket">

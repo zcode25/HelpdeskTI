@@ -24,7 +24,7 @@ class LoginController extends Controller
         if (Auth::attempt(['employeeId' =>  $credentials['employeeId'], 'password' => $credentials['password'], 'role' => 'Client'])) {
             $request->session()->regenerate();
  
-            return redirect()->intended('/client/dashboard');
+            return redirect()->intended('/client/ticket');
         }
 
         if (Auth::attempt(['employeeId' =>  $credentials['employeeId'], 'password' => $credentials['password'], 'role' => 'Admin'])) {
@@ -36,7 +36,7 @@ class LoginController extends Controller
         if (Auth::attempt(['employeeId' =>  $credentials['employeeId'], 'password' => $credentials['password'], 'role' => 'Technician'])) {
             $request->session()->regenerate();
             
-            return redirect()->intended('/technician/dashboard');
+            return redirect()->intended('/technician/ticket');
         }
 
         if (Auth::attempt(['employeeId' =>  $credentials['employeeId'], 'password' => $credentials['password'], 'role' => 'Manager'])) {

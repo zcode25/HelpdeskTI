@@ -6,18 +6,18 @@
     <h1 class="h3 mb-3">Create Ticket</h1>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-xl-6">
         <div class="card">
           <div class="card-body">
             <form action="{{ route('client.ticket.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="form-floating mb-3">
+              {{-- <div class="form-floating mb-3">
                 <input type="date" class="form-control @error('ticketDate') is-invalid @enderror" name="ticketDate" id="ticketDate" placeholder="ticketDate" value="{{ old('ticketDate') }}">
                 <label for="ticketDate">Ticket Date</label>
                 @error('ticketDate') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-floating mb-3">
                 <input type="text" class="form-control @error('request') is-invalid @enderror" name="request" id="request" placeholder="request" value="{{ old('request') }}">
                 <label for="request">Request</label>
@@ -26,14 +26,14 @@
                 @enderror
               </div>
               <div class="form-floating mb-3">
-                <textarea class="form-control @error('requestDesc') is-invalid @enderror" name="requestDesc" id="requestDesc" placeholder="Request Describe">{{ old('requestDesc') }}</textarea>
+                <textarea class="form-control @error('requestDesc') is-invalid @enderror" name="requestDesc" id="requestDesc" placeholder="Request Describe" style="height: 100px">{{ old('requestDesc') }}</textarea>
                 <label for="requestDesc">Request Description</label>
                 @error('requestDesc') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="mb-3">
-                <label for="requestPict" class="form-label">Request Pict</label>
+                <label for="requestPict" class="form-label">Request Picture</label>
                 <input class="form-control @error('requestPict') is-invalid @enderror" type="file" id="requestPict" name="requestPict" multiple>
                 @error('requestPict') 
                   <div class="invalid-feedback">{{ $message }}</div>

@@ -20,4 +20,8 @@ class Ticket extends Model
     public function technician() {
         return $this->belongsTo(User::class, 'techId', 'userId');
     }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'categoryId');
+    }
 }

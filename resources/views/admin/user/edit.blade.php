@@ -170,12 +170,12 @@
                       <tbody>
                       @foreach($data5 as $value)
                         <tr>
-                          <td>{{ $value->skill->skillName }}</td>
-                          <td>{{ $value->skill->skillDesc }}</td>
-                          <td>{{ $value->skill->category->categoryName }}</td>
+                          <td>{{ $value->skillName }}</td>
+                          <td>{{ $value->skillDesc }}</td>
+                          <td>{{ $value->category->categoryName }}</td>
                           <td>
-                              <form action="{{ route('user.destroySkill', $value->skillId) }}" method="POST">
-                                  <a href="{{ asset('storage/' . $value->skill->certificate) }}" target="_blank" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="download"></i></a>
+                              <form action="{{ route('user.destroySkill', $value->skillTechId) }}" method="POST">
+                                  <a href="{{ asset('storage/' . $value->certificate) }}" target="_blank" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="download"></i></a>
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>

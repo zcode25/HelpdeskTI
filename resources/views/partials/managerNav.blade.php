@@ -12,6 +12,11 @@
             <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard Manager</span>
           </a>
         </li>
+        <li class="sidebar-item {{ Request::is('manager/report*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/manager/report">
+            <i class="align-middle" data-feather="file"></i> <span class="align-middle">Report</span>
+          </a>
+        </li>
 
       </ul>
     </div>

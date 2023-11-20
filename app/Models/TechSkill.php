@@ -13,7 +13,11 @@ class TechSkill extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    public function skill() {
-        return $this->hasOne(Skill::class, 'skillId', 'skillId');
+    public function category(){
+        return $this->belongsTo(Category::class, 'categoryId', 'categoryId');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'userId', 'userId');
     }
 }

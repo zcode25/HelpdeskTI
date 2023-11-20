@@ -13,7 +13,11 @@ class Category extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    public function skill(){
-        return $this->hasMany(skill::class, 'skillId', 'skillId');
+    public function techSkill(){
+        return $this->hasMany(TechSkill::class, 'skillTechId', 'skillTechId');
+    }
+
+    public function ticket(){
+        return $this->hasMany(Ticket::class, 'ticketId', 'ticketId');
     }
 }

@@ -11,6 +11,7 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	{{-- <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
@@ -19,6 +20,13 @@
 	<link href="/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+  <style>
+    trix-toolbar [data-trix-button-group='file-tools'] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,31 +39,27 @@
         <div class="row text-muted">
           <div class="col-6 text-start">
             <p class="mb-0">
-              <p>2023 © PT Citra Daya Purnama</p>
-              {{-- <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy; --}}
+              <p>2023 © Hesti</p>
             </p>
-          </div>
-          <div class="col-6 text-end">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Support</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Help Center</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Privacy</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Terms</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </footer>
-  </div>
-</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script>
+      $(document).ready( function () {
+          $('#myTable').DataTable({
+              order: [[0, 'desc']]
+          } );
+      } );
+    </script>
+    <script>
+      document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+      })
+    </script>
 	  <script src="/js/app.js"></script>
 
     </body>

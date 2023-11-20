@@ -1,4 +1,4 @@
-@extends('layouts.technician')
+@extends('layouts.admin')
 @section('container')
 
 <main class="content">
@@ -8,7 +8,7 @@
       <div class="col-xl-6">
         <div class="card">
           <div class="card-body">
-            <form action="{{ route('technician.ticket.assignment', $ticket->ticketId) }}" method="POST">
+            <form action="{{ route('admin.ticket.confirmationComplaint', $ticket->ticketId) }}" method="POST">
               @csrf
               <div class="form-floating mb-0">
                 <input type="text" class="form-control-plaintext @error('ticketNumber') is-invalid @enderror" id="ticketNumber" name="ticketNumber" value="{{ $ticket->ticketNumber }}" autocomplete="off" readonly="on">
@@ -62,40 +62,34 @@
               @if ($ticket->requestPict)
                 <img src="{{ asset('storage/' . $ticket->requestPict) }}" alt="$ticket->ticketNumber" class="img-fluid mt-3">
               @endif
-              @isset($ticket->techId)
-              <hr />
-              <div class="form-floating mb-0">
-                <input type="text" class="form-control-plaintext @error('priority') is-invalid @enderror" id="priority" name="priority" value="{{ old('priority', $ticket->priority) }}" autocomplete="off" readonly="on">
-                <label for="priority" class="form-label">Priority</label>
-                @error('priority')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-              <div class="form-floating mb-0">
-                <input type="text" class="form-control-plaintext @error('techId') is-invalid @enderror" id="techId" name="techId" value="{{ old('techId', $ticket->technician->employee->name) }}" autocomplete="off" readonly="on">
-                <label for="techId" class="form-label">Technician</label>
-                @error('techId')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-              <div class="form-floating mb-0">
-                <input type="text" class="form-control-plaintext @error('expecDone') is-invalid @enderror" id="expecDone" name="expecDone" value="{{ old('expecDone', $ticket->expecDone) }}" autocomplete="off" readonly="on">
-                <label for="expecDone" class="form-label">Expec Done</label>
-                @error('expecDone')
-                  <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-              @endisset
               <hr />
               <div class="form-floating mb-3">
                 <textarea class="form-control @error('statusNote') is-invalid @enderror" id="statusNote" name="statusNote" placeholder="statusNote" style="height: 100px">{{ old('statusNote') }}</textarea>
-                <label for="statusNote" class="form-label">Notes</label>
+                <label for="statusNote">Notes</label>
                 @error('statusNote') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
-              <div class="d-grid gap-2">
-                <button type="submit" name="status" value="Worked on" class="btn btn-primary">Work On</button>
+              <div class="row mb-3">
+                <div class="col">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="status" value="Complaint Accepted" class="btn btn-primary">Accept</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                @if ($ticket->status != "Complaint On Hold")
+                <div class="col">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="status" value="Complaint On Hold" class="btn btn-warning">Hold</button>
+                  </div>
+                </div>
+                @endif
+                {{-- <div class="col">
+                  <div class="d-grid gap-2">
+                    <button type="submit" name="status" value="Rejected" class="btn btn-danger">Reject</button>
+                  </div>
+                </div> --}}
               </div>
             </form>
           </div>
@@ -104,7 +98,7 @@
       <div class="col-xl-6">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-title mb-0">Histori Status</h5>
+            <h5 class="card-title mb-0">Status History</h5>
           </div>
           <div class="card-body h-100">
             @foreach ($ticket_details as $ticket_detail)

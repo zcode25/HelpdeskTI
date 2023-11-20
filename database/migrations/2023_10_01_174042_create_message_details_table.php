@@ -17,6 +17,8 @@ return new class extends Migration
             $table->uuid('messageDetailId')->primary();
             $table->uuid('messageId');
             $table->foreign('messageId')->references('messageId')->on('messages')->onUpdate('cascade')->onDelete('restrict');
+            $table->string('messageSender', 100);
+            $table->text('message');
             $table->dateTime('messageDate');
             $table->timestamps();
         });

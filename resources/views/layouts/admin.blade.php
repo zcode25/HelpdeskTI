@@ -33,24 +33,7 @@
           <div class="col-6 text-start">
             <p class="mb-0">
               <p>2023 © Hesti</p>
-              {{-- <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy; --}}
             </p>
-          </div>
-          <div class="col-6 text-end">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Support</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Help Center</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Privacy</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="text-muted" href="#" target="_blank">Terms</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -60,7 +43,9 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready( function () {
-          $('#myTable').DataTable();
+          $('#myTable').DataTable({
+              order: [[0, 'desc']]
+          } );
       } );
     </script>
 	  <script src="/js/app.js"></script>

@@ -3,12 +3,42 @@
 
 <main class="content">
   <div class="container-fluid p-0">
-    <h1 class="h3 mb-3">Detail Tiket</h1>
+    <h1 class="h3 mb-3">Message Ticket</h1>
     <div class="row">
-      <div class="col-xl-6">
+      <div class="col">
+        @if($ticket->status != "Done")
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <form action="{{ route('technician.ticket.messageSend', $ticket->ticketId) }}" method="POST">
+                @csrf
+                <input id="message" type="hidden" name="message">
+                <trix-editor input="message"></trix-editor>
+                <div class="d-grid gap-2 mt-3">
+                  <button type="submit" name="status" value="send" class="btn btn-primary">Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        @endif
+        <div class="col-xl-12">
+          @foreach ($message_details as $message_detail)
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text mb-1"><strong>{{ $message_detail->messageSender }}</strong></p>
+              <p class="card-text"><small class="text-navy">{{ $message_detail->created_at->diffForHumans() }}</small></p>
+              <hr>
+              <p class="card-text">{!! $message_detail->message !!}</p>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+      <div class="col-xl-4">
         <div class="card">
           <div class="card-body">
-            <form action="{{ route('technician.ticket.assignment', $ticket->ticketId) }}" method="POST">
+            <form action="" method="POST">
               @csrf
               <div class="form-floating mb-0">
                 <input type="text" class="form-control-plaintext @error('ticketNumber') is-invalid @enderror" id="ticketNumber" name="ticketNumber" value="{{ $ticket->ticketNumber }}" autocomplete="off" readonly="on">
@@ -66,7 +96,7 @@
               <hr />
               <div class="form-floating mb-0">
                 <input type="text" class="form-control-plaintext @error('priority') is-invalid @enderror" id="priority" name="priority" value="{{ old('priority', $ticket->priority) }}" autocomplete="off" readonly="on">
-                <label for="priority" class="form-label">Priority</label>
+                <label for="priority" class="form-label">Priorty</label>
                 @error('priority')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -86,56 +116,12 @@
                 @enderror
               </div>
               @endisset
-              <hr />
-              <div class="form-floating mb-3">
-                <textarea class="form-control @error('statusNote') is-invalid @enderror" id="statusNote" name="statusNote" placeholder="statusNote" style="height: 100px">{{ old('statusNote') }}</textarea>
-                <label for="statusNote" class="form-label">Notes</label>
-                @error('statusNote') 
-                  <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
-              <div class="d-grid gap-2">
-                <button type="submit" name="status" value="Worked on" class="btn btn-primary">Work On</button>
-              </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="col-xl-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title mb-0">Histori Status</h5>
-          </div>
-          <div class="card-body h-100">
-            @foreach ($ticket_details as $ticket_detail)
-
-              <div class="d-flex align-items-start">
-                <div><i class="me-2 text-primary" data-feather="circle"></i></div>
-                <div class="flex-grow-1">
-                  <small class="float-end text-navy">{{ $ticket_detail->created_at->diffForHumans() }}</small>
-                  <strong>{{ $ticket_detail->status }}</strong><br />
-                  <span>{{ $ticket_detail->statusDesc }}</span><br />
-                  @isset($ticket_detail->statusNote)
-                  <div>
-                    <a class="text-sm link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" data-bs-toggle="collapse" href="#collapse{{ $ticket_detail->ticketDetailId }}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      Lihat Detail
-                    </a>
-                  </div>
-                  <div class="collapse" id="collapse{{ $ticket_detail->ticketDetailId }}">
-                    <div class="border text-sm text-muted p-2 mt-1 md-2">
-                      {{ $ticket_detail->statusNote }}
-                    </div>
-                  </div>
-                  @endisset
-                  <small class="text-muted">{{ $ticket_detail->created_at }}</small><br />
-                </div>
-              </div>
-              <hr />
-            @endforeach
-          
-          </div>
-        </div>
-      </div>
+      
+      
     </div>
      
   </div>

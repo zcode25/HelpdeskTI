@@ -71,6 +71,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::create([
+            'employeeId'          => '1234567895',
+            'name'                => 'Elham',
+            'divisionId'          => 'DV001',
+            'email'               => 'elham@gmail.com',
+            'tel'                 => '081316671378',
+            'address'             => 'Bekasi',
+        ]);
+
+        Employee::create([
             'employeeId'          => '1234567894',
             'name'                => 'Benno',
             'divisionId'          => 'DV001',
@@ -104,6 +113,13 @@ class DatabaseSeeder extends Seeder
             'userId'              => Str::uuid(), 
             'employeeId'          => '1234567894',
             'role'                => 'Manager',
+            'password'            => Hash::make('ciracas24'),
+        ]);
+
+        User::create([
+            'userId'              => Str::uuid(), 
+            'employeeId'          => '1234567895',
+            'role'                => 'Technician',
             'password'            => Hash::make('ciracas24'),
         ]);
 

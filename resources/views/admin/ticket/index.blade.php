@@ -2,7 +2,7 @@
 @section('container')
     <main class="content">
       <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Daftar Tiket</h1>
+        <h1 class="h3 mb-3">Ticket</h1>
         @if (session()->has('success'))  
         <div class="alert alert-warning alert-dismissible fade show badge bg-success mb-3" role="alert">
           <span>{{ session('success') }}</span>
@@ -15,7 +15,7 @@
           <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        {{-- <div class="row">
+        <div class="row">
           <div class="col-xl-4 col-md-6">
             <div class="card">
               <div class="card-body">
@@ -29,7 +29,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $dikirim }}</h1>
+                <h1 class="mt-1 mb-3">{{ $sent }}</h1>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Ditahan</h5>
+                    <h5 class="card-title">On Hold</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-warning text-white p-2 rounded-3">
@@ -46,7 +46,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $ditahan }}</h1>
+                <h1 class="mt-1 mb-3">{{ $on_hold }}</h1>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Ditolak</h5>
+                    <h5 class="card-title">Rejected</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-danger text-white p-2 rounded-3">
@@ -63,7 +63,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $ditolak }}</h1>
+                <h1 class="mt-1 mb-3">{{ $rejected }}</h1>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Berlangsung</h5>
+                    <h5 class="card-title">Go On</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-primary text-white p-2 rounded-3">
@@ -80,7 +80,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $berlangsung }}</h1>
+                <h1 class="mt-1 mb-3">{{ $go_on }}</h1>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Selesai</h5>
+                    <h5 class="card-title">Done</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-success text-white p-2 rounded-3">
@@ -97,7 +97,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $selesai }}</h1>
+                <h1 class="mt-1 mb-3">{{ $done }}</h1>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Komplain</h5>
+                    <h5 class="card-title">Complaint</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-danger text-white p-2 rounded-3">
@@ -114,12 +114,12 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $komplain }}</h1>
+                <h1 class="mt-1 mb-3">{{ $complaint }}</h1>
               </div>
             </div>
           </div>
           
-        </div> --}}
+        </div>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -131,15 +131,15 @@
 										<tr>
 											<th>Ticket Number</th>
 											<th>Status</th>
-                      {{-- <th>Judul</th> --}}
+											<th>Request</th>
                       <th>Client</th>
+                      <th>Technician</th>
                       <th>Priority</th>
                       <th>Sent</th>
                       <th>Expec Done</th>
                       <th>Done</th>
                       <th>Time</th>
-                      {{-- <th>Penerima Tugas</th> --}}
-                      <th>Aksi</th>
+                      <th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -155,8 +155,13 @@
 										<tr>
 											<td class="align-baseline">{{ $ticket->ticketNumber }}</td>
                       <td class="align-baseline">{{ $ticket->status }}</td>
-											{{-- <td class="align-baseline">{{ $ticket->request }}</td> --}}
+                      <td class="align-baseline">{{ $ticket->request }}</td>
 											<td class="align-baseline">{{ $ticket->client->employee->name }}</td>
+                      @if (isset($ticket->techId))
+											  <td class="align-baseline">{{ $ticket->technician->employee->name }}</td>
+                      @else
+                        <td class="align-baseline">-</td>
+                      @endif
                       @if (isset($ticket->priority))
 											  <td class="align-baseline">{{ $ticket->priority }}</td>
                       @else
@@ -188,7 +193,7 @@
                       </td>
                       @elseif ($ticket->status == "Complaint Accepted")
                       <td class="align-baseline">
-                        <a href="/admin/ticket/detailPenugasanKomplain/{{ $ticket->idTiket }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.complaintAssignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @elseif ($ticket->status == "Rejected" || $ticket->status == "Assignment" || $ticket->status == "Complaint Assignment" || $ticket->status == "Worked on" || $ticket->status == "Validation" || $ticket->status == "Done" || $ticket->status == "Complaint Rejected")
                       <td class="align-baseline">
@@ -196,7 +201,7 @@
                       </td>
                       @elseif ($ticket->status == "Complaint" || $ticket->status == "Complaint On Hold")
                       <td class="align-baseline">
-                        <a href="/admin/ticket/detailKonfirmasiKomplain/{{ $ticket->idTiket }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.complaintConfirmationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @endif
 										</tr>

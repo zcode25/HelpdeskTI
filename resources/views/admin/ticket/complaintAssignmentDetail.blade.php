@@ -1,4 +1,4 @@
-@extends('layouts.technician')
+@extends('layouts.admin')
 @section('container')
 
 <main class="content">
@@ -8,7 +8,7 @@
       <div class="col-xl-6">
         <div class="card">
           <div class="card-body">
-            <form action="{{ route('technician.ticket.assignment', $ticket->ticketId) }}" method="POST">
+            <form action="{{ route('admin.ticket.assignmentComplaint', $ticket->ticketId) }}" method="POST">
               @csrf
               <div class="form-floating mb-0">
                 <input type="text" class="form-control-plaintext @error('ticketNumber') is-invalid @enderror" id="ticketNumber" name="ticketNumber" value="{{ $ticket->ticketNumber }}" autocomplete="off" readonly="on">
@@ -95,7 +95,7 @@
                 @enderror
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" name="status" value="Worked on" class="btn btn-primary">Work On</button>
+                <button type="submit" name="status" value="Complaint Assignment" class="btn btn-primary">Submit Assignments</button>
               </div>
             </form>
           </div>

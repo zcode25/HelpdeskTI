@@ -17,6 +17,11 @@
             <i class="align-middle" data-feather="sidebar"></i> <span class="align-middle">Ticket</span>
           </a>
         </li>
+        <li class="sidebar-item {{ Request::is('admin/report*') ? 'active' : '' }}">
+          <a class="sidebar-link" href="/admin/report">
+            <i class="align-middle" data-feather="file"></i> <span class="align-middle">Report</span>
+          </a>
+        </li>
         <li class="sidebar-item {{ Request::is('admin/user*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/admin/user">
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
@@ -27,6 +32,7 @@
             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Employee</span>
           </a>
         </li> --}}
+        
         <li class="sidebar-item {{ Request::is('admin/division*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/admin/division">
             <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Division</span>

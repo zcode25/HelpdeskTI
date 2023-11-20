@@ -117,6 +117,7 @@ class UserController extends Controller
             ],
         ];
         $data4 = Category::all();
+
         $data5 = TechSkill::where('userId', $id)->get();
 
         return view('admin.user.edit', compact('data', 'data2', 'data3', 'data4', 'data5'));
@@ -177,6 +178,7 @@ class UserController extends Controller
             'categoryId'    => 'required',
             'skillName'     => 'required',
             'skillDesc'     => 'required',
+            'userId'        => 'required',
             'certificate'   => 'required|mimes:pdf,png,jpg|max:2048',
         ]);
 
@@ -184,19 +186,14 @@ class UserController extends Controller
             $validatedData['certificate'] = $request->file('certificate')->store('certificate');
         }
 
-        $validatedData['skillId'] = IdGenerator::generate(['table' => 'skills', 'field' => 'skillId', 'length' => 5, 'prefix' => 'SK']);
-        
-        Skill::create($validatedData);
-
         $skillTechId = IdGenerator::generate(['table' => 'tech_skills', 'field' => 'skillTechId', 'length' => 5, 'prefix' => 'ST']);
-        TechSkill::create([
-            'skillTechId'   => $skillTechId,
-            'skillId'       => $validatedData['skillId'],
-            'userId'        => $request->userId,
-        ]);
+        $validatedData['skillTechId'] = $skillTechId;
+
+        TechSkill::create($validatedData);
+        
         return back()->with('success', 'Skill added successfully');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -211,14 +208,13 @@ class UserController extends Controller
         return back()->with('success', 'User deleted successfully');
     }
     
-    public function destroySkill(Skill $skill) {
+    public function destroySkill(TechSkill $techSkill) {
 
-        if($skill->certificate) {
-            Storage::delete($skill->certificate);
+        if($techSkill->certificate) {
+            Storage::delete($techSkill->certificate);
         }
 
-        TechSkill::where('skillId', $skill->skillId)->delete();
-        Skill::where('skillId', $skill->skillId)->delete();
+        TechSkill::where('skillTechId', $techSkill->skillTechId)->delete();
         return back()->with('success', 'Skill deleted successfully');
 
     }

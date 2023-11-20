@@ -2,7 +2,7 @@
 @section('container')
     <main class="content">
       <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Daftar Tiket</h1>
+        <h1 class="h3 mb-3">Ticket</h1>
         @if (session()->has('success'))  
         <div class="alert alert-warning alert-dismissible fade show badge bg-success mb-3" role="alert">
           <span>{{ session('success') }}</span>
@@ -15,64 +15,13 @@
           <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        {{-- <div class="row">
+        <div class="row">
           <div class="col-xl-4 col-md-6">
             <div class="card">
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Sent</h5>
-                  </div>
-                  <div class="col-auto">
-                    <div class="bg-info text-white p-2 rounded-3">
-                      <i class="align-middle" data-feather="mail"></i>
-                    </div>
-                  </div>
-                </div>
-                <h1 class="mt-1 mb-3">{{ $dikirim }}</h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col mt-0">
-                    <h5 class="card-title">Ditahan</h5>
-                  </div>
-                  <div class="col-auto">
-                    <div class="bg-warning text-white p-2 rounded-3">
-                      <i class="align-middle" data-feather="loader"></i>
-                    </div>
-                  </div>
-                </div>
-                <h1 class="mt-1 mb-3">{{ $ditahan }}</h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col mt-0">
-                    <h5 class="card-title">Ditolak</h5>
-                  </div>
-                  <div class="col-auto">
-                    <div class="bg-danger text-white p-2 rounded-3">
-                      <i class="align-middle" data-feather="x-circle"></i>
-                    </div>
-                  </div>
-                </div>
-                <h1 class="mt-1 mb-3">{{ $ditolak }}</h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-md-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col mt-0">
-                    <h5 class="card-title">Berlangsung</h5>
+                    <h5 class="card-title">Go On</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-primary text-white p-2 rounded-3">
@@ -80,7 +29,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $berlangsung }}</h1>
+                <h1 class="mt-1 mb-3">{{ $go_on }}</h1>
               </div>
             </div>
           </div>
@@ -89,7 +38,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Selesai</h5>
+                    <h5 class="card-title">Done</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-success text-white p-2 rounded-3">
@@ -97,7 +46,7 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $selesai }}</h1>
+                <h1 class="mt-1 mb-3">{{ $done }}</h1>
               </div>
             </div>
           </div>
@@ -106,7 +55,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col mt-0">
-                    <h5 class="card-title">Komplain</h5>
+                    <h5 class="card-title">Complaint</h5>
                   </div>
                   <div class="col-auto">
                     <div class="bg-danger text-white p-2 rounded-3">
@@ -114,12 +63,12 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt-1 mb-3">{{ $komplain }}</h1>
+                <h1 class="mt-1 mb-3">{{ $complaint }}</h1>
               </div>
             </div>
           </div>
           
-        </div> --}}
+        </div>
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -181,14 +130,17 @@
                       @if ($ticket->status == "Assignment" || $ticket->status == "Complaint Assignment")
                       <td class="align-baseline">
                         <a href="{{ route('technician.ticket.assignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
                       @elseif ($ticket->status == "Worked on")
                       <td class="align-baseline">
                         <a href="{{ route('technician.ticket.validationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
-                      @elseif ($ticket->status == "Validation" || $ticket->status == "Done" || $ticket->status == "Complaint On Hold")
+                      @elseif ($ticket->status == "Validation" || $ticket->status == "Done" || $ticket->status == "Complaint On Hold" || $ticket->status == "Complaint" || $ticket->status == "Complaint Accepted")
                       <td class="align-baseline">
                         <a href="{{ route('technician.ticket.detail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
                       @endIf
 										</tr>
