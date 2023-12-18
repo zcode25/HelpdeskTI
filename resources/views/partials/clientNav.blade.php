@@ -37,7 +37,7 @@
             </a>
 
             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-              <span class="text-dark">Selamat datang, {{ auth()->user()->Employee->name }}</span>
+              <span class="text-dark">Welcome, {{ auth()->user()->Employee->name }}</span>
               
             </a>
             <div class="dropdown-menu dropdown-menu-end">
