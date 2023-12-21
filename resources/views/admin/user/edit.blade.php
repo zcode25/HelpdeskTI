@@ -47,7 +47,7 @@
                       <div class="form-group">
                         <input type="hidden" class="form-control-plaintext" value="{{ $data->userId }}" name="userId">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control @error('employeeId') is-invalid @enderror" id="employeeId" name="employeeId" placeholder="Employee Id" value="{{ old('employeeId', $data->employee->employeeId) }}" readonly>
+                          <input type="text" class="form-control @error('employeeId') is-invalid @enderror" id="employeeId" name="employeeId" placeholder="Employee Id" value="{{ old('employeeId', $data->employee->employeeId) }}">
                           <label for="employeeId">Employee Id</label>
                           @error('employeeId') 
                             <div class="invalid-feedback">{{ $message }}</div>
