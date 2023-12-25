@@ -75,20 +75,19 @@
               <div class="card-body">
                 {{-- <a href="/admin/departemen/create" class="btn btn-primary btn-sm mb-3"><i class="me-2" data-feather="user-plus"></i> <span class="align-middle">Tambah Departemen</span></a> --}}
                 <div class="table-responsive">
-                <table class="table my-0 table-sm" id="myTable">
+                <table class="table my-0 table-sm" id="myTableTicket">
 									<thead>
 										<tr>
 											<th>Ticket Number</th>
 											<th>Status</th>
-                      {{-- <th>Judul</th> --}}
+                      <th>Request</th>
                       <th>Client</th>
                       <th>Priority</th>
                       <th>Sent</th>
                       <th>Expec Done</th>
                       <th>Done</th>
                       <th>Time</th>
-                      {{-- <th>Penerima Tugas</th> --}}
-                      <th>Aksi</th>
+                      <th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -104,7 +103,7 @@
 										<tr>
 											<td class="align-baseline">{{ $ticket->ticketNumber }}</td>
                       <td class="align-baseline">{{ $ticket->status }}</td>
-											{{-- <td class="align-baseline">{{ $ticket->request }}</td> --}}
+											<td class="align-baseline">{{ $ticket->request }}</td>
 											<td class="align-baseline">{{ $ticket->client->employee->name }}</td>
                       @if (isset($ticket->priority))
 											  <td class="align-baseline">{{ $ticket->priority }}</td>

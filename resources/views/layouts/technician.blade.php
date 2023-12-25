@@ -51,9 +51,10 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready( function () {
-          $('#myTable').DataTable({
-              order: [[0, 'desc']]
+          $('#myTableTicket').DataTable({
+              order: [[5, 'desc']]
           } );
+          $('#myTable').DataTable();
       } );
     </script>
     <script>

@@ -32,11 +32,11 @@
                     <button type="submit" class="btn btn-primary btn-sm mb-3" formtarget="_blank"><i data-feather="printer"></i></button>
                   </div>
                   <div class="col-auto">
-                    <a href="{{ route('manager.report.all') }}" target="_Blank" class="btn btn-primary btn-sm mb-3"><i class="me-2" data-feather="printer"></i> <span class="align-middle">Print All Ticket</span></a>
+                    <a href="{{ route('manager.report.all') }}" target="_Blank" class="btn btn-primary btn-sm mb-3"><i class="me-2" data-feather="printer"></i> <span class="align-middle">Print All Tickets</span></a>
                   </div>
                 </form>
                 <div class="table-responsive mt-3">
-                <table class="table my-0 table-sm" id="myTable">
+                <table class="table my-0 table-sm" id="myTableTicket">
 									<thead>
 										<tr>
 											<th>Ticket Number</th>

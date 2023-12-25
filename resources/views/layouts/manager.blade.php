@@ -11,6 +11,7 @@
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	{{-- <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
@@ -39,6 +40,16 @@
       </div>
     </footer>
   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script>
+      $(document).ready( function () {
+          $('#myTableTicket').DataTable({
+              order: [[6, 'desc']]
+          } );
+          $('#myTable').DataTable();
+      } );
+    </script>
 	  <script src="/js/app.js"></script>
 
     </body>

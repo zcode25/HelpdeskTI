@@ -127,7 +127,7 @@
           <div class="card-body">
             <a href="{{ route('client.ticket.create') }}" class="btn btn-primary btn-sm mb-4"><i class="align-middle me-2" data-feather="sidebar"></i><span class="align-middle"> Create Ticket</span></a>
             <div class="table-responsive">
-            <table class="table" id="myTable">
+            <table class="table my-0 table-sm" id="myTableTicket">
               <thead>
                 <tr>
                   <th scope="col">Ticket Number</th>
