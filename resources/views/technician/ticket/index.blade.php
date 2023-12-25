@@ -11,7 +11,7 @@
         @endif
         @if (session()->has('error'))  
         <div class="alert alert-warning alert-dismissible fade show badge bg-danger mb-3" role="alert">
-          <span>{{ session('success') }}</span>
+          <span>{{ session('error') }}</span>
           <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
@@ -129,17 +129,17 @@
                       @endif
                       @if ($ticket->status == "Assignment" || $ticket->status == "Complaint Assignment")
                       <td class="align-baseline">
-                        <a href="{{ route('technician.ticket.assignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.assignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>
                         <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
                       @elseif ($ticket->status == "Worked on")
                       <td class="align-baseline">
-                        <a href="{{ route('technician.ticket.validationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.validationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>
                         <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
                       @elseif ($ticket->status == "Validation" || $ticket->status == "Done" || $ticket->status == "Complaint On Hold" || $ticket->status == "Complaint" || $ticket->status == "Complaint Accepted")
                       <td class="align-baseline">
-                        <a href="{{ route('technician.ticket.detail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="{{ route('technician.ticket.detail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>
                         <a href="{{ route('technician.ticket.message', $ticket->ticketId) }}" class="btn btn-warning btn-sm" title="Message"><i class="align-middle" data-feather="inbox"></i></a>
                       </td>
                       @endIf

@@ -12,7 +12,7 @@
     @endif
     @if (session()->has('error'))
     <div class="alert alert-warning alert-dismissible fade show badge bg-danger mb-3" role="alert">
-      <span>{{ session('success') }}</span>
+      <span>{{ session('error') }}</span>
       <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
@@ -43,9 +43,11 @@
                     <td>
                         <form action="{{ route('user.destroy', $value->userId) }}" method="POST">
                             <a class="btn btn-primary btn-sm" href="{{ route('user.edit',$value->userId) }}"><i class="align-middle" data-feather="edit"></i></a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>
+                            @if($value->role != 'Admin')
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="align-middle" data-feather="trash"></i></button>
+                            @endif
                         </form>
 
                     </td>

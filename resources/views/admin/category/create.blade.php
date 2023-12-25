@@ -14,7 +14,7 @@
               <div class="form-group">
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control @error('categoryName') is-invalid @enderror" name="categoryName" id="categoryName" placeholder="categoryName" value="{{ old('categoryName') }}">
-                  <label for="categoryName">Category Name</label>
+                  <label for="categoryName">Category Name <span class="text-danger">*</span></label>
                   @error('categoryName') 
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror

@@ -36,7 +36,7 @@
                   </div>
                 </form>
                 <div class="table-responsive mt-3">
-                <table class="table my-0 table-sm" id="myTable">
+                <table class="table my-0 table-sm" id="myTableTicket">
 									<thead>
 										<tr>
 											<th>Ticket Number</th>

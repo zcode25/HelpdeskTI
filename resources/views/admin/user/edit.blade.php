@@ -12,7 +12,7 @@
     @endif
     @if (session()->has('error'))
     <div class="alert alert-warning alert-dismissible fade show badge bg-danger mb-3" role="alert">
-      <span>{{ session('success') }}</span>
+      <span>{{ session('error') }}</span>
       <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
@@ -48,14 +48,14 @@
                         <input type="hidden" class="form-control-plaintext" value="{{ $data->userId }}" name="userId">
                         <div class="form-floating mb-3">
                           <input type="text" class="form-control @error('employeeId') is-invalid @enderror" id="employeeId" name="employeeId" placeholder="Employee Id" value="{{ old('employeeId', $data->employee->employeeId) }}">
-                          <label for="employeeId">Employee Id</label>
+                          <label for="employeeId">Employee Id <span class="text-danger">*</span></label>
                           @error('employeeId') 
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
                         </div>
                         <div class="form-floating mb-3">
                           <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="name" value="{{ old('name', $data->employee->name) }}">
-                          <label for="name">Name</label>
+                          <label for="name">Name <span class="text-danger">*</span></label>
                           @error('name') 
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
@@ -70,25 +70,25 @@
                                 @endif
                             @endforeach
                           </select>
-                          <label for="divisionId">Division</label>
+                          <label for="divisionId">Division <span class="text-danger">*</span></label>
                         </div>
                         <div class="form-floating mb-3">
                           <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="email" value="{{ old('email', $data->employee->email) }}">
-                          <label for="email">Email</label>
+                          <label for="email">Email <span class="text-danger">*</span></label>
                           @error('email') 
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
                         </div>
                         <div class="form-floating mb-3">
                           <input type="tel" class="form-control @error('tel') is-invalid @enderror" id="tel" name="tel" placeholder="Phone Number" value="{{ old('tel', $data->employee->tel) }}">
-                          <label for="tel">Phone Number</label>
+                          <label for="tel">Phone Number <span class="text-danger">*</span></label>
                           @error('tel') 
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
                         </div>
                         <div class="form-floating mb-3">
                           <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" placeholder="address" value="{{ old('address', $data->employee->address) }}">
-                          <label for="address">Address</label>
+                          <label for="address">Address <span class="text-danger">*</span></label>
                           @error('address') 
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
@@ -106,7 +106,7 @@
           </div>
           <div class="tab-pane fade" id="pills-skill" role="tabpanel" aria-labelledby="pills-skill-tab" tabindex="0">
             <div class="row">
-              <div class="col-xl-6">
+              <div class="col-xl-4">
                 <div class="card">
                   <div class="card-body">
                     <form action="{{ route('user.createSkill') }}" method="POST" enctype="multipart/form-data">
@@ -123,24 +123,24 @@
                                   @endif
                               @endforeach
                             </select>
-                            <label for="categoryId">Category</label>
+                            <label for="categoryId">Category <span class="text-danger">*</span></label>
                           </div>
                           <div class="form-floating mb-3">
                             <input type="text" class="form-control @error('skillName') is-invalid @enderror" id="skillName" name="skillName" placeholder="skillName" value="{{ old('skillName') }}">
-                            <label for="skillName">Skill Name</label>
+                            <label for="skillName">Skill Name <span class="text-danger">*</span></label>
                             @error('skillName') 
                               <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                           </div>
                           <div class="form-floating mb-3">
                             <input type="text" class="form-control @error('skillDesc') is-invalid @enderror" id="skillDesc" name="skillDesc" placeholder="skillDesc" value="{{ old('skillDesc') }}">
-                            <label for="skillDesc">Skill Description</label>
+                            <label for="skillDesc">Skill Description <span class="text-danger">*</span></label>
                             @error('skillDesc') 
                               <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                           </div>
                           <div class="mb-3">
-                            <label for="certificate" class="form-label">Uploud Certificate</label>
+                            <label for="certificate" class="form-label">Uploud Certificate <span class="text-danger">*</span></label>
                             <input class="form-control @error('certificate') is-invalid @enderror" type="file" id="certificate" name="certificate" multiple>
                             @error('certificate') 
                               <div class="invalid-feedback">{{ $message }}</div>
@@ -155,7 +155,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6">
+              <div class="col-xl-8">
                 <div class="card">
                   <div class="card-body">
                     <table class="table" id="myTable">
@@ -193,7 +193,7 @@
           <div class="tab-pane fade" id="pills-account" role="tabpanel" aria-labelledby="pills-account-tab" tabindex="0">
             <div class="row">
               <div class="col-xl-6">
-                <div class="card">
+                {{-- <div class="card">
                   <div class="card-body">
                     <form action="{{ route('user.updateRole', $data->userId) }}" method="POST">
                     @csrf
@@ -209,7 +209,7 @@
                               @endif
                             @endforeach
                             </select>
-                            <label for="role">Role</label>
+                            <label for="role">Role <span class="text-danger">*</span></label>
                           </div>
     
                           <div class="form-floating mb-3">
@@ -218,13 +218,20 @@
                       </div>
                     </form>
                   </div>
-                </div>
+                </div> --}}
                 <div class="card">
                   <div class="card-body">
                     <form action="{{ route('user.resetPassword', $data->userId) }}" method="POST">
                     @csrf
                     @method('PUT')
                       <div class="form-group">
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="password" value="{{ old('password') }}">
+                          <label for="password">Password <span class="text-danger">*</span></label>
+                          @error('password') 
+                            <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                        </div>
                         <div class="form-floating"> 
                             <button type="submit" class="col-sm-12 btn btn-danger" onclick="return confirm('Are you sure?')">Reset Password</button>
                         </div>

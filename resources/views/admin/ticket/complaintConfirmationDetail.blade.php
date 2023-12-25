@@ -3,7 +3,7 @@
 
 <main class="content">
   <div class="container-fluid p-0">
-    <h1 class="h3 mb-3">Detail Tiket</h1>
+    <h1 class="h3 mb-3">Detail Ticket</h1>
     <div class="row">
       <div class="col-xl-6">
         <div class="card">
@@ -65,7 +65,7 @@
               <hr />
               <div class="form-floating mb-3">
                 <textarea class="form-control @error('statusNote') is-invalid @enderror" id="statusNote" name="statusNote" placeholder="statusNote" style="height: 100px">{{ old('statusNote') }}</textarea>
-                <label for="statusNote">Notes</label>
+                <label for="statusNote">Notes <span class="text-danger">*</span></label>
                 @error('statusNote') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

@@ -16,7 +16,7 @@
               <input type="hidden" class="form-control-plaintext" value="{{ $data->categoryId }}" name="categoryId">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control @error('categoryName') is-invalid @enderror" value="{{ old('categoryName', $data->categoryName) }}" name="categoryName" id="categoryName">
-                <label for="categoryName">Category Name</label>
+                <label for="categoryName">Category Name <span class="text-danger">*</span></label>
                 @error('categoryName') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

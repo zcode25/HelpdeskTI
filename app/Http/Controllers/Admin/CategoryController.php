@@ -89,7 +89,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
-        return back();
+        try{
+            Category::find($id)->delete();
+        } catch (\Illuminate\Database\QueryException){
+            return back()->with([
+                'error' => 'Data cannot be deleted, because the data is still needed!',
+            ]);
+        }
+        return back()->with('success', 'Category data deleted successfully');
     }
 }

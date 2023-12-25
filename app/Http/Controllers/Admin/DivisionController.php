@@ -93,7 +93,15 @@ class DivisionController extends Controller
      */
     public function destroy($id)
     {
-        Division::where('divisionId', $id)->delete();
-        return back();
+
+        try{
+            Division::where('divisionId', $id)->delete();
+        } catch (\Illuminate\Database\QueryException){
+            return back()->with([
+                'error' => 'Data cannot be deleted, because the data is still needed!',
+            ]);
+        }
+
+        return back()->with('success', 'Division data deleted successfully');
     }
 }

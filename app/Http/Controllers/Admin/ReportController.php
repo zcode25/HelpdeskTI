@@ -22,7 +22,7 @@ class ReportController extends Controller
             'tickets' => Ticket::orderBy('created_at', 'desc')->get()
         ];
 
-        $pdf = Pdf::loadView('admin.report.all', $data);
+        $pdf = Pdf::loadView('admin.report.all', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('Report.pdf');
     }
 
@@ -34,7 +34,7 @@ class ReportController extends Controller
             'untilDate' => $request->untilDate,
         ];
 
-        $pdf = Pdf::loadView('admin.report.target', $data);
+        $pdf = Pdf::loadView('admin.report.target', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('Report.pdf');
     }
 
@@ -44,7 +44,7 @@ class ReportController extends Controller
             'ticket_details'      => TicketDetail::where('ticketId', $ticket->ticketId)->orderBy('created_at', 'desc')->get()
         ];
 
-        $pdf = Pdf::loadView('admin.report.one', $data);
+        $pdf = Pdf::loadView('admin.report.one', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('report.pdf');
     }
 }

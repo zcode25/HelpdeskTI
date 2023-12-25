@@ -160,15 +160,18 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'role'    => 'required',
         ]);
-   
+
         User::where('userId', $user->userId)->update($validatedData);
         return back()->with('success', 'Account updated successfully');
     }
 
-    public function resetPassword(User $user) {
+    public function resetPassword(Request $request, User $user) {
+        $validatedData = $request->validate([
+            'password'    => 'required',
+        ]);
 
         User::where('userId', $user->userId)->update([
-            'password' => Hash::make('password')
+            'password' => Hash::make($validatedData['password'])
         ]);
         return back()->with('success', 'Reset password successful, new password: password');
     }
@@ -203,8 +206,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-        Employee::find($user->employeeId)->delete();
+        
+        try{
+            Employee::find($user->employeeId)->delete();
+        } catch (\Illuminate\Database\QueryException){
+            return back()->with([
+                'error' => 'Data cannot be deleted, because the data is still needed!',
+            ]);
+        }
+
         return back()->with('success', 'User deleted successfully');
     }
     

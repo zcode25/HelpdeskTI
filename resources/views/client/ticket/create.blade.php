@@ -20,20 +20,20 @@
               </div> --}}
               <div class="form-floating mb-3">
                 <input type="text" class="form-control @error('request') is-invalid @enderror" name="request" id="request" placeholder="request" value="{{ old('request') }}">
-                <label for="request">Request</label>
+                <label for="request">Request <span class="text-danger">*</span></label>
                 @error('request') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-floating mb-3">
                 <textarea class="form-control @error('requestDesc') is-invalid @enderror" name="requestDesc" id="requestDesc" placeholder="Request Describe" style="height: 100px">{{ old('requestDesc') }}</textarea>
-                <label for="requestDesc">Request Description</label>
+                <label for="requestDesc">Request Description <span class="text-danger">*</span></label>
                 @error('requestDesc') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="mb-3">
-                <label for="requestPict" class="form-label">Request Picture</label>
+                <label for="requestPict" class="form-label">Request Picture <span class="text-danger">*</span></label>
                 <input class="form-control @error('requestPict') is-invalid @enderror" type="file" id="requestPict" name="requestPict" multiple>
                 @error('requestPict') 
                   <div class="invalid-feedback">{{ $message }}</div>
@@ -49,7 +49,7 @@
                       @endif
                   @endforeach
                 </select>
-                <label for="categoryId">Category</label>
+                <label for="categoryId">Category <span class="text-danger">*</span></label>
               </div>
               <div class="d-grid gap-2">
                 <button type="submit" name="submit" class="btn btn-primary">Create</button>

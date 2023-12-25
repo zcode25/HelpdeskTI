@@ -15,10 +15,11 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>hesti</title>
+	<title>HESTI</title>
 
 	<link href="/css/app.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	{{-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -32,7 +33,7 @@
         <div class="row text-muted">
           <div class="col-6 text-start">
             <p class="mb-0">
-              <p>2023 © Hesti</p>
+              <p>2023 © HESTI</p>
             </p>
           </div>
         </div>
@@ -43,9 +44,10 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script>
       $(document).ready( function () {
-          $('#myTable').DataTable({
-              order: [[0, 'asc']]
+          $('#myTableTicket').DataTable({
+              order: [[6, 'desc']]
           } );
+          $('#myTable').DataTable();
       } );
     </script>
 	  <script src="/js/app.js"></script>

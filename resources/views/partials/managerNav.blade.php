@@ -9,7 +9,7 @@
 
         <li class="sidebar-item {{ Request::is('manager/dashboard*') ? 'active' : '' }}">
           <a class="sidebar-link" href="/manager/dashboard">
-            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard Manager</span>
+            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
           </a>
         </li>
         <li class="sidebar-item {{ Request::is('manager/report*') ? 'active' : '' }}">

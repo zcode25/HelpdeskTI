@@ -15,10 +15,11 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>hesti</title>
+	<title>HESTI</title>
 
 	<link href="/css/app.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	{{-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
@@ -39,7 +40,7 @@
         <div class="row text-muted">
           <div class="col-6 text-start">
             <p class="mb-0">
-              <p>2023 © Hesti</p>
+              <p>2023 © HESTI</p>
             </p>
           </div>
         </div>

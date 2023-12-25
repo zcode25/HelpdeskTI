@@ -11,7 +11,7 @@
         @endif
         @if (session()->has('error'))  
         <div class="alert alert-warning alert-dismissible fade show badge bg-danger mb-3" role="alert">
-          <span>{{ session('success') }}</span>
+          <span>{{ session('error') }}</span>
           <button type="button" class="ms-3 btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
@@ -126,7 +126,7 @@
               <div class="card-body">
                 {{-- <a href="/admin/departemen/create" class="btn btn-primary btn-sm mb-3"><i class="me-2" data-feather="user-plus"></i> <span class="align-middle">Tambah Departemen</span></a> --}}
                 <div class="table-responsive">
-                <table class="table my-0 table-sm" id="myTable">
+                <table class="table my-0 table-sm" id="myTableTicket">
 									<thead>
 										<tr>
 											<th>Ticket Number</th>
@@ -185,23 +185,23 @@
                       @endif
                       @if ($ticket->status == "Sent" || $ticket->status == "On Hold")
                       <td class="align-baseline">
-                        <a href="{{ route('admin.ticket.confirmationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.confirmationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @elseif ($ticket->status == "Accepted")
                       <td class="align-baseline">
-                        <a href="{{ route('admin.ticket.assignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.assignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @elseif ($ticket->status == "Complaint Accepted")
                       <td class="align-baseline">
-                        <a href="{{ route('admin.ticket.complaintAssignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.complaintAssignmentDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @elseif ($ticket->status == "Rejected" || $ticket->status == "Assignment" || $ticket->status == "Complaint Assignment" || $ticket->status == "Worked on" || $ticket->status == "Validation" || $ticket->status == "Done" || $ticket->status == "Complaint Rejected")
                       <td class="align-baseline">
-                        <a href="{{ route('admin.ticket.detail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.detail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @elseif ($ticket->status == "Complaint" || $ticket->status == "Complaint On Hold")
                       <td class="align-baseline">
-                        <a href="{{ route('admin.ticket.complaintConfirmationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm"><i class="align-middle" data-feather="edit"></i></a>                        
+                        <a href="{{ route('admin.ticket.complaintConfirmationDetail', $ticket->ticketId) }}" class="btn btn-primary btn-sm" title="Detail"><i class="align-middle" data-feather="edit"></i></a>                        
                       </td>
                       @endif
 										</tr>

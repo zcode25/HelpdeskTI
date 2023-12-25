@@ -3,7 +3,7 @@
 
 <main class="content">
   <div class="container-fluid p-0">
-    <h1 class="h3 mb-3">Detail Tiket</h1>
+    <h1 class="h3 mb-3">Detail Ticket</h1>
     <div class="row">
       <div class="col-xl-6">
         <div class="card">
@@ -73,7 +73,7 @@
                   @endif
                   @endforeach
                 </select>
-                <label for="priority" class="form-label">Priority</label>
+                <label for="priority" class="form-label">Priority <span class="text-danger">*</span></label>
               </div>
               <div class="form-floating mb-3">
                 <select class="form-select" id="techId" name="techId">
@@ -85,18 +85,18 @@
                   @endif
                   @endforeach
                 </select>
-                <label for="techId" class="form-label">Technician</label>
+                <label for="techId" class="form-label">Technician <span class="text-danger">*</span></label>
               </div>
               <div class="form-floating mb-3">
                 <input type="datetime-local" class="form-control @error('expecDone') is-invalid @enderror" id="expecDone" name="expecDone" placeholder="expecDone" value="{{ old('expecDone') }}" autocomplete="off">
-                <label for="expecDone" class="form-label">Expec Done</label>
+                <label for="expecDone" class="form-label">Expec Done <span class="text-danger">*</span></label>
                 @error('expecDone')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-floating mb-3">
                 <textarea class="form-control @error('statusNote') is-invalid @enderror" id="statusNote" name="statusNote" placeholder="statusNote" style="height: 100px">{{ old('statusNote') }}</textarea>
-                <label for="statusNote" class="form-label">Notes</label>
+                <label for="statusNote" class="form-label">Notes <span class="text-danger">*</span></label>
                 @error('statusNote') 
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
