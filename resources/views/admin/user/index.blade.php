@@ -23,7 +23,8 @@
         <div class="card">
           <div class="card-body">
           <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm mb-4"><i class="align-middle me-2" data-feather="user"></i><span class="align-middle"> Add User</span></a>
-            <table class="table" id="myTable">
+          <div class="table-responsive">  
+          <table class="table" id="myTable">
                 <thead>
                   <tr>
                     <th scope="col">Employee Id</th>
@@ -56,7 +57,7 @@
                 </tbody>
               </table>
             {{-- <h5 class="card-title mb-0">Empty card</h5> --}}
-
+          </div>
           </div>
         </div>
       </div>
