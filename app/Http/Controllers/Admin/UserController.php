@@ -208,6 +208,7 @@ class UserController extends Controller
         $user = User::find($id);
         
         try{
+            User::find($id)->delete();
             Employee::find($user->employeeId)->delete();
         } catch (\Illuminate\Database\QueryException){
             return back()->with([

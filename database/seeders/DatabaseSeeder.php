@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::create([
-            'employeeId'          => '1234567891',
+            'employeeId'          => '1234567892',
             'name'                => 'Adam Zein',
             'divisionId'          => 'DV001',
             'email'               => 'adamzein345@gmail.com',
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::create([
-            'employeeId'          => '1234567892',
+            'employeeId'          => '1234567891',
             'name'                => 'Indra',
             'divisionId'          => 'DV003',
             'email'               => 'indra@gmail.com',
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::create([
-            'employeeId'          => '1234567895',
+            'employeeId'          => '1234567894',
             'name'                => 'Elham',
             'divisionId'          => 'DV001',
             'email'               => 'elham@gmail.com',
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::create([
-            'employeeId'          => '1234567894',
+            'employeeId'          => '1234567895',
             'name'                => 'Benno',
             'divisionId'          => 'DV001',
             'email'               => 'benno@gmail.com',
@@ -90,37 +90,37 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'userId'              => Str::uuid(), 
-            'employeeId'          => '1234567891',
+            'employeeId'          => '1234567892',
             'role'                => 'Admin',
-            'password'            => Hash::make('ciracas24'),
+            'password'            => Hash::make('password'),
         ]);
 
         User::create([
             'userId'              => Str::uuid(), 
-            'employeeId'          => '1234567892',
+            'employeeId'          => '1234567891',
             'role'                => 'Client',
-            'password'            => Hash::make('ciracas24'),
+            'password'            => Hash::make('password'),
         ]);
 
         User::create([
             'userId'              => Str::uuid(), 
             'employeeId'          => '1234567893',
             'role'                => 'Technician',
-            'password'            => Hash::make('ciracas24'),
+            'password'            => Hash::make('password'),
         ]);
 
         User::create([
             'userId'              => Str::uuid(), 
             'employeeId'          => '1234567894',
-            'role'                => 'Manager',
-            'password'            => Hash::make('ciracas24'),
+            'role'                => 'Technician',
+            'password'            => Hash::make('password'),
         ]);
 
         User::create([
             'userId'              => Str::uuid(), 
             'employeeId'          => '1234567895',
-            'role'                => 'Technician',
-            'password'            => Hash::make('ciracas24'),
+            'role'                => 'Manager',
+            'password'            => Hash::make('password'),
         ]);
 
         Category::create([
